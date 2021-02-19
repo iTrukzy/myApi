@@ -4,12 +4,16 @@ from flask_cors import CORS
 
 
 app = Flask(__name__)
-app.config['MONGO_URI']='mongodb://localhost/pythonreactdb'
+app.config['MONGO_URI']='mongodb://https://william-api-create.netlify.app/pythonreactdb'
 mongo = PyMongo(app)
 
 CORS(app)
 
 db = mongo.db.users
+
+@app.route('/', methods=['GET'])
+def index():
+    return 'Hello World'
 
 @app.route('/users', methods=['POST'])
 def createUser():
